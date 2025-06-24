@@ -14,11 +14,6 @@ from dotenv import load_dotenv
 # === Load Config from .env ===
 load_dotenv()
 
-# API_URL = os.getenv("API_URL", "http://127.0.0.1:5000/api/rfid")
-# LOGIN_URL = os.getenv("LOGIN_URL", "http://127.0.0.1:5000/login")
-# USERNAME = os.getenv("USERNAME", "rpi-001")
-# PASSWORD = os.getenv("PASSWORD", "secret123")
-# DUPLICATE_TIMEOUT = int(os.getenv("DUPLICATE_TIMEOUT", 5))
 API_URL = os.getenv("API_URL")
 LOGIN_URL = os.getenv("LOGIN_URL")
 USERNAME = os.getenv("USERNAME")
