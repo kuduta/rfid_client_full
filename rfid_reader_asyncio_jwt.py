@@ -3,7 +3,7 @@ import struct
 import asyncio
 import aiohttp
 import socket
-import uuid
+# import uuid
 import logging
 import os
 from datetime import datetime
@@ -42,12 +42,12 @@ def get_ip():
         s.close()
     return ip
 
-def get_mac():
-    mac = uuid.getnode()
-    return '-'.join(f'{(mac >> i) & 0xff:02X}' for i in reversed(range(0, 48, 8)))
+# def get_mac():
+#     mac = uuid.getnode()
+#     return '-'.join(f'{(mac >> i) & 0xff:02X}' for i in reversed(range(0, 48, 8)))
 
 DEVICE_IP = get_ip()
-DEVICE_MAC = get_mac()
+# DEVICE_MAC = get_mac()
 
 # === Deduplication Map ===
 last_sent_time = defaultdict(float)
@@ -86,7 +86,7 @@ async def send_rfid(epc, rssi, session):
         "epc": epc,
         "rssi": rssi,
         "ipaddress": DEVICE_IP,
-        "macaddress": DEVICE_MAC
+        "macaddress": USERNAME
     }
 
     for attempt in range(3):
