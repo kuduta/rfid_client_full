@@ -86,7 +86,7 @@ async def send_rfid(epc, rssi, session):
         "epc": epc,
         "rssi": rssi,
         "ipaddress": DEVICE_IP,
-        "macaddress": USERNAME
+        "client": USERNAME
     }
 
     for attempt in range(3):
