@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python3 /home/raspi/rfid_client_full/rfid_reader_asyncio_jwt.py
-WorkingDirectory=/home/raspi/python/RFID
+WorkingDirectory=/home/rfid_client_full
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
