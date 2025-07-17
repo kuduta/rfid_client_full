@@ -3,12 +3,13 @@ Description=RFID Reader Python Script
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/raspi/python/RFID/rfid_reader_asyncio_jwt.py
+User=raspi
 WorkingDirectory=/home/raspi/python/RFID
+ExecStart=/usr/bin/python3 /home/raspi/python/RFID/rfid_reader_asyncio_jwt.py
+Restart=always
+RestartSec=5
 StandardOutput=inherit
 StandardError=inherit
-Restart=always
-User=raspi
 
 [Install]
 WantedBy=multi-user.target
