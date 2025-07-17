@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=raspi
 WorkingDirectory=/home/raspi/python/RFID
-ExecStart=/usr/bin/python3 /home/raspi/python/RFID/rfid_reader_asyncio_jwt.py
+ExecStart=/home/raspi/python/RFID/venv/bin/python /home/raspi/python/RFID/rfid_reader_asyncio_jwt.py
 Environment="PATH=/home/raspi/python/RFID/venv/bin"
 Restart=always
 RestartSec=5
