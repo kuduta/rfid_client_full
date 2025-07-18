@@ -30,18 +30,33 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # === Get IP/MAC ===
-def get_ip():
+#def get_ip():
+#    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#    try:
+#       s.connect(("8.8.8.8", 80))
+#        ip = s.getsockname()[0]
+#    except Exception:
+#        ip = "0.0.0.0"
+#    finally:
+#        s.close()
+#    return ip
+
+#DEVICE_IP = get_ip()
+def get_local_ip_to_dns(dns_ip):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        s.connect(("8.8.8.8", 80))
-        ip = s.getsockname()[0]
-    except Exception:
-        ip = "0.0.0.0"
+        s.connect((dns_ip, 53))  # Port 53 = DNS
+        return s.getsockname()[0]
+    except Exception as e:
+        return f"Error connecting to {dns_ip}: {e}"
     finally:
         s.close()
-    return ip
 
-DEVICE_IP = get_ip()
+dns_list = ["192.168.3.18", "192.168.3.19"]
+for dns in dns_list:
+    DEVICE_IP = get_local_ip_to_dns(dns)
+    #print(f"Local IP used to reach {dns} -> {ip}")
+
 
 # === Deduplication Map ===
 last_sent_time = defaultdict(float)
